@@ -1,3 +1,4 @@
+@@ -0,0 +1,40 @@
 /*
 Adafruit Arduino - Lesson 13. DC Motor
 */
@@ -25,16 +26,14 @@ void loop()
     
   if (Serial.available()) //wait until someone has typed something
   {
-    motor = Serial.parseInt(); //turn whatever was typed into an integer that represents which motor to use
-    if (motor >= 0 && motor <= 2) // only do this if the numbers typed are between 0 and 2
-    {
-      for (a=0; a<=2 ; a++) { //cycle through actions for each motor
-        if ( a==motor )      // is this motor to be turned on
-          action[a]=speed;    // if so, set speed
-        else
-          action[a]=turnOff; // otherwise set action to turn off 
-        analogWrite(motorPin[a], action[a]); //turn requested motor on at speed 200 and turn other two motors off
-      }
+    motor = Serial.parseInt(); //turn whatever was typed into an integer that represents which motor to us
+    for (a=0; a<=2 ; a++) { //cycle through actions for each motor
+      if ( a==motor )      // is this motor to be turned on
+        action[a]=speed;    // if so, set speed
+      else         
+        action[a]=turnOff; // otherwise set action to turn off 
+      analogWrite(motorPin[a], action[a]); //turn requested motor on at speed 200 and turn other two motors off
     }
   }
 } 
+
